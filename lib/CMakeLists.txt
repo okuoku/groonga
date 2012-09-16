@@ -35,6 +35,14 @@ target_link_libraries(libgroonga
   ${DL_LIBS}
   ${WS2_32_LIBS})
 
+if(MSVC)
+    set_source_files_properties(
+        FILES
+        expr.c
+        PROPERTIES
+        COMPILE_FLAGS /Od)
+endif()
+
 if(WIN32)
   set(LIBGROONGA_INSTALL_DIR "${BIN_DIR}")
 else()
